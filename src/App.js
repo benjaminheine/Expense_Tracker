@@ -1,16 +1,15 @@
 import React from "react";
-import ExpenseInputTable from "./components/ExpenseInputTable";
-import ExpenseOutputTable from "./components/ExpenseOutputTable";
-//import AddExpenseButton from "./components/AddExpenseButton";
+import InputTable from "./components/InputTable";
+import OutputTable from "./components/OutputTable";
+import Expenses from "./Expenses";
 
 function App() {
-  //const expensesFromLocalStorage = [];
+  const expensesFromLocalStorage = [];
 
   return (
     <div>
-    <ExpenseInputTable />
-    {/* <AddExpenseButton /> */}
-    <ExpenseOutputTable />
+    <InputTable />
+    <OutputTable />
     </div>
   );
 }
