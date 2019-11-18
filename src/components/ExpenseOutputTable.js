@@ -1,9 +1,10 @@
 import React from "react";
 
-function OutputTable() {
+function ExpenseOutputTable() {
   return (
     <div>
       <table className="Table-input">
+      <tbody>
         <tr>
           <th>type</th>
           <th>name</th>
@@ -16,8 +17,9 @@ function OutputTable() {
           <td>14.11.2019</td>
           <td>50 Euro</td>
         </tr>
+        </tbody>
       </table>
     </div>
   );
 }
- export default OutputTable;
+ export default ExpenseOutputTable;
