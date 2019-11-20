@@ -1,8 +1,8 @@
-![Expense Tracker App]()
+![Expense Tracker App](https://github.com/benjaminheine/Expense_Tracker/blob/master/ExpenseTrackerApp.png)
 # Expense-Trackr_APP
 Safe your expenses. This App is for safing ones expenses with its type, discription, date and amount.
 <p align="center">
-  <img width="460" height="300" src="https://github.com/benjaminheine/Expense_Tracker/blob/master/expense.png">
+  <img width="460" height="300" src="https://github.com/benjaminheine/Expense_Tracker/blob/master/money_dollar_cash_coins_riches_wealth_icon-icons.com_53585.png">
 </p>
 
 ## Summary
