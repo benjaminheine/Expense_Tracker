@@ -1,14 +1,15 @@
 import React from "react";
-import InputTable from "./components/InputTable";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import ExpenseInputTable from "./components/ExpenseInputTable";
 import OutputTable from "./components/OutputTable";
-import Expenses from "./Expenses";
+import './index.css';
 
 function App() {
-  const expensesFromLocalStorage = [];
+  // const expensesFromLocalStorage = [];
 
   return (
     <div>
-    <InputTable />
+    <ExpenseInputTable />
     <OutputTable />
     </div>
   );
