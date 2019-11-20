@@ -9,9 +9,9 @@ Safe your expenses. This App is for safing ones expenses with its type, discript
 This project mostly serves for practicing react. 
 It handles with html, bootstrap and java script, react and css.
 ## Requirements
-React
 
-![Expense Tracker App](https://github.com/benjaminheine/Expense_Tracker/blob/master/icon_html_256_30059.png) ![](https://github.com/benjaminheine/Expense_Tracker/blob/master/css.png) ![](https://github.com/benjaminheine/Expense_Tracker/blob/master/js_3720.png) ![] (https://github.com/benjaminheine/Expense_Tracker/blob/master/react.png)
+![Expense Tracker App](https://github.com/benjaminheine/Expense_Tracker/blob/master/icon_html_256_30059.png) ![](https://github.com/benjaminheine/Expense_Tracker/blob/master/css.png) ![](https://github.com/benjaminheine/Expense_Tracker/blob/master/js_3720.png) ![](https://github.com/benjaminheine/Expense_Tracker/blob/master/react.png)
+
 ## Deliverables
 Each expense should include:
 - The date
