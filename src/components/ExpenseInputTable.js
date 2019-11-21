@@ -1,14 +1,11 @@
 import React from "react";
 
 class ExpenseInputTable extends React.Component {
+  expenseData;
   constructor(props) {
-    super(props)
-
-    // this.handleExpenseTypeChange =this.handleExpenseTypeChange.bind(this);
-    // this.handleExpenseDiscription =this.handleExpenseDiscription.bind(this);
-    // this.handleExpenseDate =this.handleExpenseDate.bind(this);
-    // this.handleExpenseAmount =this.handleExpenseAmount.bind(this);
-
+    super(props);
+    this.addExpense =this.addExpense.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       expensetype: '',
       expensediscription: '',
@@ -17,35 +14,34 @@ class ExpenseInputTable extends React.Component {
     }
   }
 
-  handleExpenseTypeChange = event => {
-    this.setState({
-      expensetype: event.target.value
-    });
-  };
-
-  handleExpenseDiscription = event => {
-    this.setState({
-      expensediscription: event.target.value
-    });
-  };
-
-  handleExpenseDate = event => {
-    this.setState({
-      expensedate: event.target.value
-    });
-  };
-
-  handleExpenseAmount = event => {
-    this.setState({
-      expenseamount: event.target.value
-    });
-  };
+  handleChange= (e) => {
+    this.setState({[e.target.name]:e.target.value});
+  }
 
   addExpense = event => {
-    console.log(this.state.expensediscription);
     event.preventDefault()
-  };
-  // };
+    localStorage.setItem('expenseItem',JSON.stringify(this.state));
+ }
+ componentDidMount() {
+  this.expenseData = JSON.parse(localStorage.getItem('expenseItem'));
+
+  if (localStorage.getItem('expenseItem')){
+    this.setState({
+      expensetype: this.expenseData.expensetype,
+      expensediscription: this.expenseData.expensediscription,
+      expensedate: this.expenseData.expensedate,
+      expenseamount: this.expenseData.expenseamount
+    })
+  } else {
+    this.setState({
+      expensetype: '',
+      expensediscription: '',
+      expensedate: '',
+      expenseamount: ''
+    })
+  }
+}
+
   render() {
     return (
       <div className="App">
@@ -58,9 +54,9 @@ class ExpenseInputTable extends React.Component {
           <div className="form-group">
             <label>Type</label>
             <select 
-              id="typeOfExpense"
-              value={this.state.expensetype}
-              onChange={this.handleExpenseTypeChange}
+              name="expensetype"
+              value={this.expensetype}
+              onChange={this.handleChange}
             >
               <option value="card">Card</option>
               <option value="cash">Cash</option>
@@ -72,28 +68,28 @@ class ExpenseInputTable extends React.Component {
             <label>Discription</label>
             <input 
             type="text" 
-            id="expenseDiscription" 
-            value={this.state.expensediscription} 
-            onChange={this.handleExpenseDiscription} 
+            name="expensediscription" 
+            value={this.expensediscription} 
+            onChange={this.handleChange} 
             placeholder="What did you spend on?"/>
           </div>
           <div className="form-group">
             <label>Date:</label>
             <input
               type="date"
-              id="dayOfExpense"
-              value={this.state.expensedate}
-              onChange={this.handleExpenseDate}
+              name="expensedate"
+              value={this.expensedate}
+              onChange={this.handleChange}
             />
           </div>
           <div className="form-group">
             <label>Amount:</label>
             <input
               type="number"
-              id="expenseAmount"
+              name="expenseamount"
               value={this.expenseamount}
               placeholder="How much?"
-              onChange={this.state.handleExpenseAmount}
+              onChange={this.handleChange}
             />
           </div>
           <button type="submit" className="btn btn-primary">
