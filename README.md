@@ -1,8 +1,8 @@
-![Expense Tracker App]https://github.com/benjaminheine/Expense_Tracker/blob/master/financial-report.png)
+![](https://github.com/benjaminheine/Expense_Tracker/blob/master/financial-report.png)
 # Expense-Trackr_APP
 Safe your expenses. This App is for safing ones expenses with its type, discription, date and amount.
 <p align="center">
-  <img width="460" height="300" src="(https://github.com/benjaminheine/Expense_Tracker/blob/master/ExpenseTrackerApp.png>
+  <img width="460" height="300" src="https://github.com/benjaminheine/Expense_Tracker/blob/master/ExpenseTrackerApp.png">
 </p>
 
 ## Summary
