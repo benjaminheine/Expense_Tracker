@@ -1,6 +1,8 @@
-import React from "react";
+import React, { Component }  from 'react';
+import App from "../App"
 
-function OutputTable() {
+function OutputTable (props){
+  
   return (
       <table className="Table-input">
       <tbody>
@@ -11,13 +13,14 @@ function OutputTable() {
           <th>amount</th>
         </tr>
         <tr>
-          <td>cash</td>
-          <td>mc d</td>
-          <td>14.11.2019</td>
-          <td>50 Euro</td>
+          <td>{props.expensetype}</td>
+          <td>{props.expensediscripton}</td>
+          <td>{props.expensedate}</td>
+          <td>{props.expenseamount}</td>
         </tr>
         </tbody>
       </table>
   );
+  
 }
  export default OutputTable;
