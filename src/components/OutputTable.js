@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import App from "../App"
 
 function OutputTable (props){
-  
+  let liExpenseElement = props.items
   return (
       <table className="Table-input">
       <tbody>
