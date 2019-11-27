@@ -11,48 +11,74 @@ class App extends React.Component {
 
     this.state = {
       obj: {},
-      expensetype: "Card",
-      expensediscription: "",
-      expensedate: "",
-      expenseamount: "",
-      expensearrayofobjects: []
+      expenseType: "Card",
+      expenseDiscription: "",
+      expenseDate: "",
+      expenseAmount: "",
+      expenseArrayOfObjects: []
     };
     this.addExpense = this.addExpense.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    const {name, value} = e.target;
+    this.setState({ [name]: value });
   };
+
+  // addExpense = e => {
+ 
+    
+  //     this.setState(state => {
+  //       return{
+
+  //         expenseArrayOfObjects: [
+  //           ...state.expenseArrayOfObjects,
+  //           {
+  //             expenseType: state.expenseType,
+              
+  //             expenseDiscription: state.expenseDiscription,
+  //             expenseDate: state.expenseDate,
+  //             expenseAmount: state.expenseAmount
+  //           }
+  //         ]
+  //       }
+        
+  //     });
+
+
+
+
 
   addExpense = e => {
     this.setState({
-      expensearrayofobjects: [
-        ...this.state.expensearrayofobjects,
+      expenseArrayOfObjects: [
+        ...this.state.expenseArrayOfObjects,
         {
-          expensetype: this.state.expensetype,
-          expensediscription: this.state.expensediscription,
-          expensedate: this.state.expensedate,
-          expenseamount: this.state.expenseamount
+          expenseType: this.state.expenseType,
+          
+          expenseDiscription: this.state.expenseDiscription,
+          expenseDate: this.state.expenseDate,
+          expenseAmount: this.state.expenseAmount
         }
       ]
     });
-    console.log(this.state.expensearrayofobjects);
-
+    console.log(this.state.expenseArrayOfObjects);
+    //console.log(this.state.expenseType);
     e.preventDefault();
   };
 
   render() {
-    let expenseRows = this.state.expensearrayofobjects.map(expense => {
-      return <ExpenseRow expensearrayofobjects={expense} />;
+    let expenseRows = this.state.expenseArrayOfObjects.map(expense => {
+      return <ExpenseRow expenseArrayOfObjects={expense} />;
     });
     return (
       <div>
         <ExpenseInputForm
-          expensetype={this.expensetype}
-          expensediscription={this.expensediscription}
-          expensedate={this.expensedate}
-          expenseamount={this.expenseamount}
+          expenseType={this.expenseType}
+          expenseDiscription={this.expenseDiscription}
+          expenseDate={this.expenseDate}
+          expenseAmount={this.expenseAmount}
           handleChange={this.handleChange}
           addExpense={this.addExpense}
         />

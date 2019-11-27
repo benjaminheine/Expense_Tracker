@@ -15,8 +15,8 @@ function ExpenseInputForm (props){
               <div className="form-group">
                 <label>Type</label>
                 <select 
-                  name="expensetype"
-                  value={props.expensetype}
+                  name="expenseType"
+                  value={props.expenseType}
                   onChange={props.handleChange}
                 >
                   <option value="card">Card</option>
@@ -29,8 +29,8 @@ function ExpenseInputForm (props){
                 <label>Discription</label>
                 <input 
                 type="text" 
-                name="expensediscription" 
-                value={props.expensediscription} 
+                name="expenseDiscription" 
+                value={props.expenseDiscription} 
                 onChange={props.handleChange} 
                 placeholder="What did you spend on?"/>
               </div>
@@ -38,18 +38,21 @@ function ExpenseInputForm (props){
                 <label>Date:</label>
                 <input
                   type="date"
-                  name="expensedate"
-                  value={props.expensedate}
+                  name="expenseDate"
+                  value={props.expenseDate}
                   onChange={props.handleChange}
                 />
               </div>
               <div className="form-group">
                 <label>Amount:</label>
                 <input
-                  type="number"
-                  name="expenseamount"
-                  value={props.expenseamount}
-                  placeholder="How much?"
+                
+                   type="number"
+                  step="0.01" 
+                  
+                  name="expenseAmount"
+                  value={props.expenseAmount}
+                  // placeholder="How much?"
                   onChange={props.handleChange}
                 />
               </div>

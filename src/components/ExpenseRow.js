@@ -3,10 +3,10 @@ import React from 'react';
 function ExpenseRow (props) {
     return(
         <tr>
-            <td>{props.expensearrayofobjects.expensetype}</td>
-            <td>{props.expensearrayofobjects.expensediscription}</td>
-            <td>{props.expensearrayofobjects.expensedate}</td>
-            <td>{props.expensearrayofobjects.expenseamount}</td>
+            <td>{props.expenseArrayOfObjects.expenseType}</td>
+            <td>{props.expenseArrayOfObjects.expenseDiscription}</td>
+            <td>{props.expenseArrayOfObjects.expenseDate}</td>
+            <td>{props.expenseArrayOfObjects.expenseAmount}</td>
         </tr>
     )
 }
