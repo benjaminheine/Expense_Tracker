@@ -7,6 +7,7 @@ function ExpenseRow (props) {
             <td>{props.expenseArrayOfObjects.expenseDiscription}</td>
             <td>{props.expenseArrayOfObjects.expenseDate}</td>
             <td>{props.expenseArrayOfObjects.expenseAmount}</td>
+            <td><input type="checkbox"  onChange={props.handleCheckbox}/></td>
         </tr>
     )
 }
