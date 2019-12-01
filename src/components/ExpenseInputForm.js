@@ -8,7 +8,7 @@ function ExpenseInputForm (props){
             </header>
             <h1>Add a new item:</h1>
             
-            <form onSubmit={props.addExpense}>
+            <form id="expenseForm" onSubmit={props.addExpense}>
               <div className="form-group">
                 <label>Type</label>
                 <select 

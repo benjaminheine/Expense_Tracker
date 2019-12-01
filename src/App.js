@@ -18,7 +18,8 @@ class App extends React.Component {
     };
     this.addExpense = this.addExpense.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.deleteExpenseByCheckbox = this.deleteExpenseByCheckbox.bind(this);
+    this.resetForm = this.resetForm.bind(this);
   }
 
   handleChange = e => {
@@ -26,12 +27,20 @@ class App extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleCheckbox = e => {
-    console.log(e);
+  deleteExpenseByCheckbox = e => {
+    //let i = e.parentElement.rowIndex;
+    document.getElementById("expenseTable").deleteRow(e.target.parentElement.parentElement.rowIndex);
+    console.log(e.target.parentElement.parentElement);
     e.persist();
+    //e.preventDefault();
   };
   
   addExpense = e => {
+    if (!this.state.expenseDiscription || !this.state.expenseDate || isNaN(this.state.expenseAmount)){
+      alert("Please fill out all fields!")
+      return false;
+    }
+
     this.setState(prevState => {
       return {
       expenseArrayOfObjects: [
@@ -43,14 +52,34 @@ class App extends React.Component {
           expenseAmount: prevState.expenseAmount
         }
       ]
-    }});
-     console.log(this.state.expenseArrayOfObjects);
+    }
+  });
+  
+    //   this.setState({
+    //     expenseType: "Card",
+    //     expenseDiscription: "",
+    //     expenseDate: "",
+    //     expenseAmount: ""
+    // });
     e.preventDefault();
-  };
+    };
+    
+  resetForm = () => { 
+    this.setState({
+      expenseType: "Card",
+      expenseDiscription: "",
+      expenseDate: "",
+      expenseAmount: ""
+      
+    });
+  }
+  
+  
+
 
   render() {
     let expenseRows = this.state.expenseArrayOfObjects.map(expense => 
-      <ExpenseRow key={this.state.expenseArrayOfObjects.indexOf(expense)} expenseArrayOfObjects={expense} handleCheckbox={this.handleCheckbox} />
+      <ExpenseRow key={this.state.expenseArrayOfObjects.indexOf(expense)} expenseArrayOfObjects={expense} deleteExpenseByCheckbox={this.deleteExpenseByCheckbox} />
     );
     return (
       <div>
@@ -62,7 +91,7 @@ class App extends React.Component {
           handleChange={this.handleChange}
           addExpense={this.addExpense}
         />
-        <table className="Table-input">
+        <table id="expenseTable" className="Table-input">
           <tbody>
             <tr>
               <th>type</th>
