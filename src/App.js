@@ -19,68 +19,70 @@ class App extends React.Component {
     this.addExpense = this.addExpense.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.deleteExpenseByCheckbox = this.deleteExpenseByCheckbox.bind(this);
-    this.resetForm = this.resetForm.bind(this);
   }
 
   handleChange = e => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
   deleteExpenseByCheckbox = e => {
-    //let i = e.parentElement.rowIndex;
-    document.getElementById("expenseTable").deleteRow(e.target.parentElement.parentElement.rowIndex);
+    document
+      .getElementById("expenseTable")
+      .deleteRow(e.target.parentElement.parentElement.rowIndex);
     console.log(e.target.parentElement.parentElement);
     e.persist();
-    //e.preventDefault();
   };
-  
+
   addExpense = e => {
-    if (!this.state.expenseDiscription || !this.state.expenseDate || isNaN(this.state.expenseAmount)){
-      alert("Please fill out all fields!")
-      return false;
-    }
+    if (
+      !this.state.expenseDiscription ||
+      !this.state.expenseDate ||
+      !this.state.expenseAmount
+    ) {
+      alert("Please fill out all fields!");
+      e.preventDefault();
+      return; //false;
+    } else {
+      this.setState(prevState => {
+        return {
+          expenseArrayOfObjects: [
+            ...prevState.expenseArrayOfObjects,
+            {
+              expenseType: prevState.expenseType,
+              expenseDiscription: prevState.expenseDiscription,
+              expenseDate: prevState.expenseDate,
+              expenseAmount: prevState.expenseAmount
+            }
+          ]
+        };
+      });
 
-    this.setState(prevState => {
-      return {
-      expenseArrayOfObjects: [
-        ...prevState.expenseArrayOfObjects,
-        {
-          expenseType: prevState.expenseType,
-          expenseDiscription: prevState.expenseDiscription,
-          expenseDate: prevState.expenseDate,
-          expenseAmount: prevState.expenseAmount
-        }
-      ]
-    }
-  });
-  
-    //   this.setState({
-    //     expenseType: "Card",
-    //     expenseDiscription: "",
-    //     expenseDate: "",
-    //     expenseAmount: ""
-    // });
-    e.preventDefault();
-    };
-    
-  resetForm = () => { 
-    this.setState({
-      expenseType: "Card",
-      expenseDiscription: "",
-      expenseDate: "",
-      expenseAmount: ""
-      
-    });
-  }
-  
-  
+      e.target.expenseType.value = "card";
+      e.target.expenseDiscription.value = "";
+      e.target.expenseDate.value = "";
+      e.target.expenseDate.value = "";
+      e.target.expenseAmount.value = null;
 
+      this.setState({
+        expenseType: "Card",
+        expenseDiscription: "",
+        expenseDate: "",
+        expenseAmount: ""
+      });
+
+      e.preventDefault();
+    }
+  };
 
   render() {
-    let expenseRows = this.state.expenseArrayOfObjects.map(expense => 
-      <ExpenseRow key={this.state.expenseArrayOfObjects.indexOf(expense)} expenseArrayOfObjects={expense} deleteExpenseByCheckbox={this.deleteExpenseByCheckbox} />
-    );
+    let expenseRows = this.state.expenseArrayOfObjects.map(expense => (
+      <ExpenseRow
+        key={this.state.expenseArrayOfObjects.indexOf(expense)}
+        expenseArrayOfObjects={expense}
+        deleteExpenseByCheckbox={this.deleteExpenseByCheckbox}
+      />
+    ));
     return (
       <div>
         <ExpenseInputForm
@@ -98,6 +100,7 @@ class App extends React.Component {
               <th>name</th>
               <th>date</th>
               <th>amount</th>
+              <th>remove</th>
             </tr>
             {expenseRows}
           </tbody>
