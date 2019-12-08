@@ -5,6 +5,7 @@ import ExpenseRow from "./components/ExpenseRow";
 import "./index.css";
 
 class App extends React.Component {
+  expenseLocalStorageData;
   constructor(props) {
     super(props);
 
@@ -14,6 +15,7 @@ class App extends React.Component {
       expenseDiscription: "",
       expenseDate: "",
       expenseAmount: "",
+      expenseID:"",
       expenseArrayOfObjects: []
     };
     this.addExpense = this.addExpense.bind(this);
@@ -30,7 +32,8 @@ class App extends React.Component {
     document
       .getElementById("expenseTable")
       .deleteRow(e.target.parentElement.parentElement.rowIndex);
-    console.log(e.target.parentElement.parentElement);
+    //console.log(e.target.parentElement.parentElement);
+    //console.log(document.getElementById("expenseTable"));
     e.persist();
   };
 
@@ -58,6 +61,11 @@ class App extends React.Component {
         };
       });
 
+
+      localStorage.setItem('expenses',JSON.stringify(this.state.expenseArrayOfObjects));
+      this.expenseLocalStorageData = JSON.parse(localStorage.getItem('expenses'));
+      console.log(this.expenseLocalStorageData);
+
       e.target.expenseType.value = "card";
       e.target.expenseDiscription.value = "";
       e.target.expenseDate.value = "";
@@ -74,6 +82,25 @@ class App extends React.Component {
       e.preventDefault();
     }
   };
+
+
+
+  componentDidMount() {
+    this.expenseLocalStorageData = JSON.parse(localStorage.getItem('expenses'));
+ 
+    if (localStorage.getItem('expenses')) {
+        this.setState({
+          expenseArrayOfObjects: this.expenseLocalStorageData
+    })
+} else {
+    this.setState({
+      expenseArrayOfObjects: []
+    })
+}
+}
+
+
+
 
   render() {
     let expenseRows = this.state.expenseArrayOfObjects.map(expense => (
