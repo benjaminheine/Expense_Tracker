@@ -15,7 +15,7 @@ class App extends React.Component {
       expenseDiscription: "",
       expenseDate: "",
       expenseAmount: "",
-      expenseID:"",
+      expenseID: "",
       expenseArrayOfObjects: []
     };
     this.addExpense = this.addExpense.bind(this);
@@ -32,8 +32,17 @@ class App extends React.Component {
     document
       .getElementById("expenseTable")
       .deleteRow(e.target.parentElement.parentElement.rowIndex);
-    //console.log(e.target.parentElement.parentElement);
-    //console.log(document.getElementById("expenseTable"));
+    let cleanedExpenseArrayOfObjects = this.state.expenseArrayOfObjects.filter(
+      obj => {
+        return obj.expenseID != e.target.parentElement.parentElement.id;
+      }
+    );
+
+    localStorage.setItem(
+      "expenses",
+      JSON.stringify(cleanedExpenseArrayOfObjects)
+    );
+    this.expenseLocalStorageData = JSON.parse(localStorage.getItem("expenses"));
     e.persist();
   };
 
@@ -45,26 +54,32 @@ class App extends React.Component {
     ) {
       alert("Please fill out all fields!");
       e.preventDefault();
-      return; //false;
+      return;
     } else {
-      this.setState(prevState => {
-        return {
+      this.setState(
+        {
           expenseArrayOfObjects: [
-            ...prevState.expenseArrayOfObjects,
+            ...this.state.expenseArrayOfObjects,
             {
-              expenseType: prevState.expenseType,
-              expenseDiscription: prevState.expenseDiscription,
-              expenseDate: prevState.expenseDate,
-              expenseAmount: prevState.expenseAmount
+              expenseType: this.state.expenseType,
+              expenseDiscription: this.state.expenseDiscription,
+              expenseDate: this.state.expenseDate,
+              expenseAmount: this.state.expenseAmount,
+              expenseID: Date.now()
             }
           ]
-        };
-      });
-
-
-      localStorage.setItem('expenses',JSON.stringify(this.state.expenseArrayOfObjects));
-      this.expenseLocalStorageData = JSON.parse(localStorage.getItem('expenses'));
-      console.log(this.expenseLocalStorageData);
+        },
+        function() {
+          localStorage.setItem(
+            "expenses",
+            JSON.stringify(this.state.expenseArrayOfObjects)
+          );
+          this.expenseLocalStorageData = JSON.parse(
+            localStorage.getItem("expenses")
+          );
+          console.log(this.state.expenseID);
+        }
+      );
 
       e.target.expenseType.value = "card";
       e.target.expenseDiscription.value = "";
@@ -83,24 +98,19 @@ class App extends React.Component {
     }
   };
 
-
-
   componentDidMount() {
-    this.expenseLocalStorageData = JSON.parse(localStorage.getItem('expenses'));
- 
-    if (localStorage.getItem('expenses')) {
-        this.setState({
-          expenseArrayOfObjects: this.expenseLocalStorageData
-    })
-} else {
-    this.setState({
-      expenseArrayOfObjects: []
-    })
-}
-}
+    this.expenseLocalStorageData = JSON.parse(localStorage.getItem("expenses"));
 
-
-
+    if (localStorage.getItem("expenses")) {
+      this.setState({
+        expenseArrayOfObjects: this.expenseLocalStorageData
+      });
+    } else {
+      this.setState({
+        expenseArrayOfObjects: []
+      });
+    }
+  }
 
   render() {
     let expenseRows = this.state.expenseArrayOfObjects.map(expense => (
@@ -127,7 +137,7 @@ class App extends React.Component {
               <th>name</th>
               <th>date</th>
               <th>amount</th>
-              <th>remove</th>
+              {/* <th>remove</th> */}
             </tr>
             {expenseRows}
           </tbody>
