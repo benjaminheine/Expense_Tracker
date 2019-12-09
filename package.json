@@ -1,6 +1,9 @@
 {
   "name": "expense_tracker",
   "version": "0.1.0",
+  "engines": {
+   "node": "12.13.0"
+  }
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
