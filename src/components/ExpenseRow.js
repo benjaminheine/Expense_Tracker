@@ -1,12 +1,13 @@
 import React from "react";
 
 function ExpenseRow(props) {
+  const expense = props.expense;
   return (
-    <tr id={props.expenseArrayOfObjects.expenseID}>
-      <td>{props.expenseArrayOfObjects.expenseType}</td>
-      <td>{props.expenseArrayOfObjects.expenseDiscription}</td>
-      <td>{props.expenseArrayOfObjects.expenseDate}</td>
-      <td>{props.expenseArrayOfObjects.expenseAmount}</td>
+    <tr id={expense.expenseID}>
+      <td>{expense.expenseType}</td>
+      <td>{expense.expenseDiscription}</td>
+      <td>{expense.expenseDate}</td>
+      <td>{expense.expenseAmount}</td>
       <td>
         <button
           type="button"

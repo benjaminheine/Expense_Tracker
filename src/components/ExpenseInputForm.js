@@ -7,7 +7,6 @@ function ExpenseInputForm(props) {
         <h1>Expence Tracker App</h1>
       </header>
       <h1>Add a new item:</h1>
-
       <form id="expenseForm" onSubmit={props.addExpense}>
         <div className="form-group">
           <label>Type</label>
@@ -48,7 +47,6 @@ function ExpenseInputForm(props) {
             step="0.01"
             name="expenseAmount"
             value={props.expenseAmount}
-            // placeholder="How much?"
             onChange={props.handleChange}
           />
         </div>
