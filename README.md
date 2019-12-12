@@ -1,10 +1,11 @@
 ![](https://github.com/benjaminheine/Expense_Tracker/blob/master/images/financialReport.png)
 # Expense-Tracker_APP
-Try it right [here](https://expensetrackerapplication1.herokuapp.com/)
 Safe your expenses. This App is for safing ones expenses with its type, discription, date and amount.
 <p align="center">
   <img width="460" height="300" src="https://github.com/benjaminheine/Expense_Tracker/blob/master/images/expenseTrackerApp.png">
 </p>
+
+Try it right [here](https://expensetrackerapplication1.herokuapp.com/)
 
 ## Summary
 This project mostly serves for practicing react. 
