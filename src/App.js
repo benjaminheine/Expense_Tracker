@@ -86,7 +86,7 @@ class App extends React.Component {
     const expenseLocalStorageData = JSON.parse(
       localStorage.getItem("expenses")
     );
-    if (expenseLocalStorageData.length > 0) {
+    if (expenseLocalStorageData) {
       this.setState({
         expenseArrayOfObjects: JSON.parse(localStorage.getItem("expenses"))
       });
